@@ -29,7 +29,7 @@ class __AppConfig:
     banner_image = "../assets/hr-banner.png"
     icon = "../assets/hr-banner.png"
     app_title = "Dashboard - Capacity Management"
-    data_file = "../input_data/hr-data.csv"
+    data_file = "../input_data/raw_hr_data.csv"
     sidebar_state = "expanded"
     layout = "wide"
     icon_question = "❓"

@@ -10,6 +10,7 @@ import plots
 import utils
 from config import app_config
 
+
 ###
 ### render the summary page
 ###
@@ -88,7 +89,7 @@ def __show_emp_count_card(df):
                 key="tot_card",
                 title="Total<br>Employees",
                 value=tot_emp_cnt,
-                icon="fa-venus-mars",
+                icon="fa-sharp fa-solid fa-venus-mars fa-xs",
             )
         with g_col2:
             utils.render_card(
@@ -96,7 +97,7 @@ def __show_emp_count_card(df):
                 title="Males",
                 value=male_emp_cnt,
                 secondary_text=f" ({male_pct})%",
-                icon="fa-mars",
+                icon="fa-sharp fa-solid fa-mars fa-xs",
                 progress_value=int(male_pct),
                 progress_color="#186ee8",
             )
@@ -106,7 +107,7 @@ def __show_emp_count_card(df):
                 title="Females",
                 value=female_emp_cnt,
                 secondary_text=f" ({female_pct})%",
-                icon="fa-venus",
+                icon="fa-sharp fa-light fa-venus fa-xs",
                 progress_value=int(female_pct),
                 progress_color="#ff6d6d",
             )

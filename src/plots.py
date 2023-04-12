@@ -10,6 +10,7 @@ from config import plot_config
 # setup app-wide plotly theme
 io.templates.default = plot_config.theme
 
+
 ###
 ### Summary tab plots
 ###
@@ -208,4 +209,41 @@ def plot_retrench_donut(df):
         margin=dict(t=45, l=0, r=0, b=0),
     )
     fig.update_traces(pull=[0.1, 0])
+    return fig
+
+
+def plot_dept_promo_bar(df):
+    fig = px.bar(
+        data_frame=df,
+        x="Department",
+        y="PromotePct",
+        color="ToBePromoted",
+        barmode="group",
+        color_discrete_sequence=plot_config.cat_color_map,
+        title="To be promoted<br>in each department",
+    )
+    fig.update_traces(
+        texttemplate="%{y:.1f}%",
+        textposition="auto",
+        textfont_color="white",
+    )
+    return fig
+
+
+def plot_dept_retrench_bar(df):
+    df_group = df
+    fig = px.bar(
+        data_frame=df_group,
+        x="Department",
+        y="RetrenchPct",
+        color="ToBeRetrenched",
+        barmode="group",
+        color_discrete_sequence=plot_config.cat_color_map_r,
+        title="To be retrenched<br>in each department",
+    )
+    fig.update_traces(
+        texttemplate="%{y:.1f}%",
+        textposition="auto",
+        textfont_color="white",
+    )
     return fig

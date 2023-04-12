@@ -5,7 +5,6 @@ import streamlit as st
 from pandas import DataFrame
 
 
-@st.cache_data
 def load_transform(file) -> DataFrame:
     """Load the raw data and prepare/transform it"""
     ###
@@ -71,7 +70,6 @@ def load_transform(file) -> DataFrame:
     return df
 
 
-@st.cache_data
 def get_dept_stats_df(df: DataFrame):
     """Calculate various stats for each department and returns results in a DataFrame"""
     # Prepare a df with department as index and mean MonthlyIncome, mean PercentSalaryHike,
@@ -101,46 +99,42 @@ def get_dept_stats_df(df: DataFrame):
     return df_dept_stat
 
 
-@st.cache_data
 def get_gender_count(df: DataFrame):
     """Calculates employee total count and for each gender,
     returns count and percentage as result"""
     df_gender = df.groupby("Gender").size()
-    male_emp_cnt = df_gender["Male"]
-    female_emp_cnt = df_gender["Female"]
+    male_emp_cnt = df_gender.get("Male", 0)
+    female_emp_cnt = df_gender.get("Female", 0)
     tot_emp_cnt = male_emp_cnt + female_emp_cnt
     male_pct = round((male_emp_cnt / tot_emp_cnt) * 100, 2)
     female_pct = round((female_emp_cnt / tot_emp_cnt) * 100, 2)
     return tot_emp_cnt, male_emp_cnt, female_emp_cnt, male_pct, female_pct
 
-
-@st.cache_data
+``
 def get_promo_count(df: DataFrame):
     """Calculates number of employees due for promotion,
     returns count and percentage as result"""
     df_promo = df.groupby("ToBePromoted").size()
-    promo_cnt = df_promo["Yes"]
-    not_promo_cnt = df_promo["No"]
+    promo_cnt = df_promo.get("Yes", 0)
+    not_promo_cnt = df_promo.get("No", 0)
     tot_emp_cnt, _, _, _, _ = get_gender_count(df)
     promo_pct = round((promo_cnt / tot_emp_cnt) * 100, 2)
     not_promo_pct = round((not_promo_cnt / tot_emp_cnt) * 100, 2)
     return promo_cnt, not_promo_cnt, promo_pct, not_promo_pct
 
 
-@st.cache_data
 def get_retrench_count(df: DataFrame):
     """Calculates number of employees due for retrenchment,
     returns count and percentage as result"""
     df_retrench = df.groupby("ToBeRetrenched").size()
-    retrench_cnt = df_retrench["Yes"]
-    not_retrench_cnt = df_retrench["No"]
+    retrench_cnt = df_retrench.get("Yes", 0)
+    not_retrench_cnt = df_retrench.get("No", 0)
     tot_emp_cnt, _, _, _, _ = get_gender_count(df)
     retrench_pct = round((retrench_cnt / tot_emp_cnt) * 100, 2)
     not_retrench_pct = round((not_retrench_cnt / tot_emp_cnt) * 100, 2)
     return retrench_cnt, not_retrench_cnt, retrench_pct, not_retrench_pct
 
 
-@st.cache_data
 def get_pct_at_cmp(df):
     pct_at_cmp = {
         "between 0-25%": len(df.query("PctAtCompany <= 25")) / len(df),
@@ -152,6 +146,56 @@ def get_pct_at_cmp(df):
         / len(df),
     }
     return pct_at_cmp
+
+
+def get_dept_retrench_pct(df):
+    # count number of employee by department & retrench flag (Yes, No)
+    df_group = df.groupby(["Department", "ToBeRetrenched"]).size()
+    # calculate the percentage of yes/no within each group
+    df_group = (
+        df_group.groupby(level=0, group_keys=False)
+        .apply(lambda x: x / x.sum() * 100)
+        .to_frame()
+        .reset_index()
+        .rename({0: "RetrenchPct"}, axis=1)
+    )
+    return df_group
+
+
+def get_dept_promo_pct(df):
+    # count number of employee by department & promote flag (Yes, No)
+    df_group = df.groupby(["Department", "ToBePromoted"]).size()
+    # calculate the percentage of yes/no within each group
+    df_group = (
+        df_group.groupby(level=0, group_keys=False)
+        .apply(lambda x: x / x.sum() * 100)
+        .to_frame()
+        .reset_index()
+        .rename({0: "PromotePct"}, axis=1)
+    )
+    return df_group
+
+
+def get_filter_elements(df, clear_filters=False):
+    if clear_filters:
+        filter_elem = {
+            "Gender": [],
+            "Department": [],
+            "EducationField": [],
+            "JobRole": [],
+            "Age": [df["Age"].min(), df["Age"].max()],
+            "YearsAtCompany": [df["YearsAtCompany"].min(), df["YearsAtCompany"].max()],
+        }
+    else:
+        filter_elem = {
+            "Gender": df["Gender"].unique().tolist(),
+            "Department": df["Department"].unique().tolist(),
+            "EducationField": df["EducationField"].unique().tolist(),
+            "JobRole": df["JobRole"].unique().tolist(),
+            "Age": [df["Age"].min(), df["Age"].max()],
+            "YearsAtCompany": [df["YearsAtCompany"].min(), df["YearsAtCompany"].max()],
+        }
+    return filter_elem
 
 
 # do not cache, need to read file from disk

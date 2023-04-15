@@ -27,13 +27,10 @@ class __PlotConfig:
 class __AppConfig:
     """All app-wide configurations are defined here"""
 
-    # get project root folder
-    pwd = os.environ["PWD"]
-
-    banner_image = f"{pwd}/assets/hr-banner.png"
-    icon = f"{pwd}/assets/hr-banner.png"
+    banner_image = r"../assets/hr-banner.png"
+    icon = r"../assets/hr-banner.png"
     app_title = "Dashboard - Capacity Management"
-    data_file = f"{pwd}/input_data/raw_hr_data.csv"
+    data_file = r"../input_data/raw_hr_data.csv"
     sidebar_state = "expanded"
     layout = "wide"
     icon_question = "❓"

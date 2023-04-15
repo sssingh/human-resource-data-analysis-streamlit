@@ -8,7 +8,6 @@ venv*/
 artifacts/
 .examples/
 .swp
-.streamlit
 eda.ipynb
 
 # Byte-compiled / optimized / DLL files

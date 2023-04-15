@@ -1,12 +1,10 @@
-"""Performance tab rendering functionality"""
+"""Capacity tab rendering functionality"""
 
 import pandas as pd
 import streamlit
 import utils
 import data
 import plots
-
-# from tab_summary import show_emp_count_card
 
 
 ###
@@ -17,7 +15,6 @@ def render(df: pd.DataFrame):
     __build_kpi_cards(df)
     # Show plots
     __build_dept_promo_retrench_plots(df)
-    __build_attrition_plots(df)
 
 
 ###
@@ -135,30 +132,5 @@ def __build_dept_promo_retrench_plots(df):
                     "* On retrenchment front matter is even worse where all three "
                     + "overshot the retrenchment targets, R&D and Sales departments "
                     + "are projecting more than twice the stipulated target (max 5%) ",
-                ]
-            )
-
-
-def __build_attrition_plots(df):
-    with streamlit.expander("Analysis: Employee Attrition..."):
-        utils.show_questions(
-            [
-                "* Question 1?",
-                "* Question 2?",
-                "* Question 3?",
-            ]
-        )
-
-        col1, col2 = streamlit.columns(2)
-        with col1:
-            pass
-        with col2:
-            pass
-        with streamlit.expander("View Insights..."):
-            utils.show_insights(
-                [
-                    "* Insight 1",
-                    "* Insight 2",
-                    "* Insight 3",
                 ]
             )

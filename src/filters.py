@@ -7,7 +7,7 @@ import streamlit as st
 def apply(df):
     """filters the dataframe using active filters and returns the filtered dataframe"""
     ### get all filters elements to be build from the dataset
-    filter_elem = data.get_filter_elements(df)
+    filter_elem = data.get_filter_options(df)
     ### build the filter UI
     curr_filter_ui = __build_filter_ui(df, filter_elem)
     ### read the session state and apply filter on the dataframe
@@ -21,7 +21,7 @@ def __build_filter_ui(df, filter_elem):
     st.sidebar.markdown("---")
 
     ### If user clicked to clear all the filters then reset the session state
-    filter_clear = data.get_filter_elements(df, clear_filters=True)
+    filter_clear = data.get_filter_options(df, empty_filters=True)
     if st.sidebar.button("Clear Filters"):
         for key, options in filter_clear.items():
             st.session_state[key] = options

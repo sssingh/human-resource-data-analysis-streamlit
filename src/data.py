@@ -45,7 +45,7 @@ def load_transform(file) -> DataFrame:
     ] = "Yes"
     df["ToBeRetrenched"].fillna("No", inplace=True)
 
-    ## Create a new column - AgeBuckets
+    ## Create a new column - WorkExperience
     # to divide TotalWorkExperience into bins, to be used in viz
     df["WorkExperience"] = pd.cut(
         df["TotalWorkingYears"],
@@ -60,6 +60,35 @@ def load_transform(file) -> DataFrame:
             "35 Yrs",
             "40 Yrs",
         ],
+    )
+
+    ## Create a new column - Ages
+    # to divide Age into bins, to be used in viz
+    df["Ages"] = pd.cut(
+        df["Age"],
+        bins=6,
+        labels=[
+            "18-24 Yrs",
+            "25-31 Yrs",
+            "32-38 Yrs",
+            "39-45 Yrs",
+            "46-52 Yrs",
+            "53-60 Yrs",
+        ],
+    )
+
+    ## Create a new column - WorkplaceProximity bucket DistanceFromHome
+    # to divide DistanceFromHome into bins, to be used in viz
+    # 1-10: Very Far, 11-20: Far, 12-29: Near
+    df["WorkplaceProximity"] = pd.cut(
+        df["DistanceFromHome"],
+        bins=3,
+        labels=["Very Far", "Far", "Near"],
+    )
+
+    ## Map JobSatisfaction numeric levels to descriptive labels
+    df["JobSatisfaction"] = df["JobSatisfaction"].map(
+        {1: "Very Dissatisfied", 2: "Dissatisfied", 3: "Neutral", 4: "Satisfied"}
     )
 
     ## Create a new column - %YrsAtCompany
@@ -110,7 +139,7 @@ def get_gender_count(df: DataFrame):
     female_pct = round((female_emp_cnt / tot_emp_cnt) * 100, 2)
     return tot_emp_cnt, male_emp_cnt, female_emp_cnt, male_pct, female_pct
 
-``
+
 def get_promo_count(df: DataFrame):
     """Calculates number of employees due for promotion,
     returns count and percentage as result"""
@@ -176,9 +205,10 @@ def get_dept_promo_pct(df):
     return df_group
 
 
-def get_filter_elements(df, clear_filters=False):
-    if clear_filters:
-        filter_elem = {
+def get_filter_options(df, empty_filters=False):
+    """Returns filter fields options to fill filter or clear filter fields"""
+    if empty_filters:
+        filter_opt = {
             "Gender": [],
             "Department": [],
             "EducationField": [],
@@ -187,7 +217,7 @@ def get_filter_elements(df, clear_filters=False):
             "YearsAtCompany": [df["YearsAtCompany"].min(), df["YearsAtCompany"].max()],
         }
     else:
-        filter_elem = {
+        filter_opt = {
             "Gender": df["Gender"].unique().tolist(),
             "Department": df["Department"].unique().tolist(),
             "EducationField": df["EducationField"].unique().tolist(),
@@ -195,7 +225,59 @@ def get_filter_elements(df, clear_filters=False):
             "Age": [df["Age"].min(), df["Age"].max()],
             "YearsAtCompany": [df["YearsAtCompany"].min(), df["YearsAtCompany"].max()],
         }
-    return filter_elem
+    return filter_opt
+
+
+def get_attrition_stats(df):
+    """Computes and returns attrition related statistics"""
+    attrition_stat = {}
+    df_attrition = df.query("Attrition == 'Yes'")
+
+    ### overall attrition rate
+    tot_employee = len(df)
+    tot_attrition = len(df_attrition)
+    attrition_rate = round(tot_attrition / tot_employee * 100, 2)
+    attrition_stat["CompanyWide"] = {
+        "Total Attrition": tot_attrition,
+        "Attrition Rate": attrition_rate,
+    }
+
+    ### attrition by gender
+    df_gender = __attrition_by_dimention(df=df_attrition, dimention="Gender")
+    for _, row in df_gender.iterrows():
+        x = {}
+        x["Total Attrition"] = row["Count"]
+        x["Attrition Rate"] = row["% Attrition"]
+        attrition_stat[f"{row['Gender']}"] = x
+
+    ### attrition by department
+    attrition_stat["Department"] = __attrition_by_dimention(
+        df=df_attrition, dimention="Department"
+    )
+
+    ### attrition by distance to work
+    attrition_stat["WorkplaceProximity"] = __attrition_by_dimention(
+        df=df_attrition, dimention="WorkplaceProximity"
+    )
+
+    ### attrition by job-role
+    attrition_stat["JobRole"] = __attrition_by_dimention(
+        df=df_attrition, dimention="JobRole"
+    )
+
+    ### attrition by employee satisfaction
+    attrition_stat["JobSatisfaction"] = __attrition_by_dimention(
+        df=df_attrition, dimention="JobSatisfaction"
+    )
+
+    ### attrition by age
+    attrition_stat["Ages"] = __attrition_by_dimention(df=df_attrition, dimention="Ages")
+
+    ### attrition by work exp
+    attrition_stat["WorkExperience"] = __attrition_by_dimention(
+        df=df_attrition, dimention="WorkExperience"
+    )
+    return attrition_stat
 
 
 # do not cache, need to read file from disk
@@ -203,3 +285,14 @@ def df_to_csv(file: str) -> bytes:
     """Read file again and return as as a csv"""
     df = pd.read_csv(file)
     return df.to_csv(index=False).encode("utf-8")
+
+
+### Modules internal functions
+def __attrition_by_dimention(df, dimention):
+    """Compute attrition count and % for given column in dataframe"""
+    tot_attrition = len(df)
+    df_attr = pd.DataFrame(
+        df.groupby(f"{dimention}").size().reset_index().rename({0: "Count"}, axis=1)
+    )
+    df_attr["% Attrition"] = (df_attr["Count"] / tot_attrition * 100).round(2)
+    return df_attr.sort_values(by="% Attrition", ascending=False)

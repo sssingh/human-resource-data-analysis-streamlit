@@ -162,7 +162,7 @@ def plot_cmp_work_exp_scatter(df, annot_text):
 
 
 ###
-### Capacity tab plots
+### Capacity tab plots - Promotion and Retrenchment
 ###
 def plot_promotion_donut(df):
     df_group = (
@@ -245,5 +245,132 @@ def plot_dept_retrench_bar(df):
         texttemplate="%{y:.1f}%",
         textposition="auto",
         textfont_color="white",
+    )
+    return fig
+
+
+###
+### Capacity tab plots - Attrition
+###
+def plot_dept_attrition(df):
+    fig = px.pie(
+        data_frame=df,
+        names="Department",
+        values="% Attrition",
+        hole=0.4,
+        color_discrete_sequence=plot_config.cat_color_map_r,
+        title="Attrition by Department",
+    )
+    fig.update_traces(
+        textfont_color="white", textinfo="label+percent", showlegend=False
+    )
+    fig.update_layout(
+        legend_title_text="Department",
+        # margin=dict(t=0, l=0, r=0, b=0),
+    )
+    return fig
+
+
+def plot_gender_attrition(df):
+    fig = px.pie(
+        data_frame=df,
+        names="Gender",
+        values="% Attrition",
+        hole=0.4,
+        color_discrete_sequence=plot_config.cat_color_map_r,
+        title="Attrition by Gender",
+    ).update_traces(textfont_color="white", textinfo="label+percent", showlegend=False)
+    fig.update_layout(
+        legend_title_text="Gender",
+    )
+    return fig
+
+
+def plot_dist_attrition(df):
+    fig = px.bar(
+        data_frame=df,
+        y="WorkplaceProximity",
+        x="% Attrition",
+        color="WorkplaceProximity",
+        color_discrete_sequence=plot_config.cat_color_map_r,
+        title="Attrition by Distance",
+    )
+    fig.update_traces(
+        texttemplate="%{x:.1f}%",
+        textposition="auto",
+        textfont_color="white",
+        showlegend=False,
+    )
+    return fig
+
+
+def plot_jobrole_attrition(df):
+    fig = px.bar(
+        data_frame=df,
+        x="JobRole",
+        y="% Attrition",
+        color="JobRole",
+        color_discrete_sequence=plot_config.cat_color_map,
+        title="Attrition by Job Role",
+    )
+    fig.update_traces(
+        texttemplate="%{y:.1f}%",
+        textposition="auto",
+        textfont_color="white",
+        showlegend=False,
+    )
+    return fig
+
+
+def plot_satis_attrition(df):
+    fig = px.bar(
+        data_frame=df,
+        y="JobSatisfaction",
+        x="% Attrition",
+        color="JobSatisfaction",
+        color_discrete_sequence=plot_config.cat_color_map,
+        title="Attrition by Job Satisfaction",
+    )
+    fig.update_traces(
+        texttemplate="%{x:.1f}%",
+        textposition="auto",
+        textfont_color="white",
+        showlegend=False,
+    )
+    return fig
+
+
+def plot_ages_attrition(df):
+    fig = px.bar(
+        data_frame=df,
+        y="Ages",
+        x="% Attrition",
+        color="Ages",
+        color_discrete_sequence=plot_config.cat_color_map_r,
+        title="Attrition by Age",
+    )
+    fig.update_traces(
+        texttemplate="%{x:.1f}%",
+        textposition="auto",
+        textfont_color="white",
+        showlegend=False,
+    )
+    return fig
+
+
+def plot_exp_attrition(df):
+    fig = px.bar(
+        data_frame=df,
+        y="WorkExperience",
+        x="% Attrition",
+        color="WorkExperience",
+        color_discrete_sequence=plot_config.cat_color_map,
+        title="Attrition by Work Experience",
+    )
+    fig.update_traces(
+        texttemplate="%{x:.1f}%",
+        textposition="auto",
+        textfont_color="white",
+        showlegend=False,
     )
     return fig

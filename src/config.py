@@ -28,7 +28,7 @@ class __AppConfig:
     """All app-wide configurations are defined here"""
 
     # get current working directory
-    cwd = os.environ["PWD"]
+    cwd = os.getcwd()
     banner_image = f"{cwd}/assets/hr-banner.png"
     icon = f"{cwd}/assets/hr-banner.png"
     app_title = "Dashboard - Capacity Management"

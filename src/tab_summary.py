@@ -43,11 +43,6 @@ def __show_sample_data(df: pd.DataFrame):
             file_name="hr_data_downloaded.csv",
             mime_type="text/csv",
         )
-        streamlit.error(
-            "NOTE: Warning symbols are shown above in certain columns because"
-            " at present streamlit "
-            "can't handle pandas `categorical` data-type"
-        )
 
 
 def __build_kpi_cards(df: pd.DataFrame):

@@ -136,7 +136,7 @@ def __build_attrition_plots(df):
                 )
         utils.sep()
 
-        with streamlit.expander("View Insights..."):
+        with streamlit.expander("View Insights...", expanded=True):
             utils.show_insights(
                 [
                     "* Overall attrition rate is > 16%, well above the stipulated max"

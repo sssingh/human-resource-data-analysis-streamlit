@@ -110,7 +110,7 @@ def __show_emp_count_card(df):
 
 def __build_age_plots(df: pd.DataFrame):
     ### age distribution
-    with streamlit.expander("Analysis: Age & Marital Status..."):
+    with streamlit.expander("Analysis: Age & Marital Status...", expanded=True):
         utils.show_questions(
             [
                 "* Are we an ageing or young organization?",
@@ -137,7 +137,7 @@ def __build_age_plots(df: pd.DataFrame):
             fig_age_box = plots.plot_age_marital_status_box(df)
             streamlit.plotly_chart(fig_age_box, use_container_width=True)
         ### List insights drawn wrt to objectives/questions
-        with streamlit.expander("View insights..."):
+        with streamlit.expander("View insights...", expanded=True):
             utils.show_insights(
                 [
                     "* The median employee age is 36 yrs, where the minimum is 18 yrs, "
@@ -161,7 +161,7 @@ def __build_age_plots(df: pd.DataFrame):
 
 def __build_dept_plots(df: pd.DataFrame):
     ### department stats
-    with streamlit.expander("Analysis: Departments..."):
+    with streamlit.expander("Analysis: Departments...", expanded=True):
         utils.show_questions(
             [
                 "* Which department is the largest employer? ",
@@ -208,7 +208,7 @@ def __build_dept_plots(df: pd.DataFrame):
 
 def __build_exp_plots(df: pd.DataFrame):
     ### experience stat
-    with streamlit.expander("Analysis: Work experience..."):
+    with streamlit.expander("Analysis: Work experience...", expanded=True):
         utils.show_questions(
             [
                 "* Do we have a balanced distribution of employees based on their work experience? ",
@@ -228,7 +228,7 @@ def __build_exp_plots(df: pd.DataFrame):
             annot_text = __get_pct_at_cmp_annot_text(pct_at_cmp)
             fig_plot_cmp_work_exp = plots.plot_cmp_work_exp_scatter(df, annot_text)
             streamlit.plotly_chart(fig_plot_cmp_work_exp, use_container_width=True)
-        with streamlit.expander("View insights..."):
+        with streamlit.expander("View insights...", expanded=True):
             utils.show_insights(
                 [
                     "* There is a good mix of experience, however around 75 percent of workforce "

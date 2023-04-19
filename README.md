@@ -1,4 +1,6 @@
-[![Open in Streamlit](https://img.shields.io/badge/open_app_in_streamlit-FFFFFF?style=for-the-badge&logo=streamlit&logoColor=red)](https://sssingh-human-resource-data-analysis-streamlit-srcapp-6qnlbm.streamlit.app/)
+
+<a href="https://sssingh-human-resource-data-analysis-streamlit-srcapp-6qnlbm.streamlit.app/"  target="_blank"><img src="https://img.shields.io/badge/open_app_in_streamlit-FFFFFF?style=for-the-badge&logo=streamlit&logoColor=red" /></a>
+
 
 # Human Resource Analysis
 In this `Data Analysis` project, we examine raw HR data to learn more about how organizational policies influence employee behaviors such as `attrition` and `job-satisfaction` plus staff `promotions` and `layoffs`. The company's human resources policies shall then be amended based on the insights obtained.
@@ -110,7 +112,7 @@ This dashboard looks at the company's capacity for employee retention and determ
 
 ## How To Use
 ### Read-only direct access via the web (Recommended):
-[![Open in Streamlit](https://img.shields.io/badge/open_app_in_streamlit-FFFFFF?style=for-the-badge&logo=streamlit&logoColor=red)](https://sssingh-human-resource-data-analysis-streamlit-srcapp-6qnlbm.streamlit.app/)  
+<a href="https://sssingh-human-resource-data-analysis-streamlit-srcapp-6qnlbm.streamlit.app/"  target="_blank"><img src="https://img.shields.io/badge/open_app_in_streamlit-FFFFFF?style=for-the-badge&logo=streamlit&logoColor=red" /></a> <br>
 and explore the fully functional interactive report. <br><br>
 
 ### Run the application locally:

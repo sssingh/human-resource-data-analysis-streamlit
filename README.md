@@ -1,6 +1,3 @@
-# A streamlit app for HR data analysis
-
-
 [![Open in Streamlit](https://img.shields.io/badge/open_app_in_streamlit-FFFFFF?style=for-the-badge&logo=streamlit&logoColor=red)](https://sssingh-human-resource-data-analysis-streamlit-srcapp-6qnlbm.streamlit.app/)
 
 # Human Resource Analysis
@@ -59,7 +56,7 @@ HR-DA01-REQ-10|Executive Committee <br> Rightsizing Team <br> Hiring & Retention
 |Data Item|Rule  
 |:--|:---
 | Promotion % Rate | [Count of to-be-promoted] = <br> &nbsp;&nbsp;&nbsp;&nbsp; (if [yrs-since-last-promotion] >= 10 yrs and [performance-rating] is > 2) <br> **[promotion-rate]** = [Count of to-be-promoted] / [total-employee]) * 100 
-| Retrenchment % Rate  | [Count of to-be-retrenched] as <br> &nbsp;&nbsp;&nbsp;&nbsp;(if [Not-to-be-promoted] and ((if [years-in-current-role] is between 3 to 10 years and [performance-rating] is > 2) <br> OR (If [years-in-current-role] is >= 10 years and [performance-rating] < 3)) <br> **[retrenchment-rate]** = [Count of to-be-retrenched] / [total-employee]) * 100
+| Retrenchment % Rate  | [Count of to-be-retrenched] = <br> &nbsp;&nbsp;&nbsp;&nbsp;(if [Not-to-be-promoted] and ((if [years-in-current-role] is between 3 to 10 years and [performance-rating] is > 2) <br> OR (If [years-in-current-role] is >= 10 years and [performance-rating] < 3)) <br> **[retrenchment-rate]** = [Count of to-be-retrenched] / [total-employee]) * 100
 | Attrition % Rate | **[attrition-rate]** = [Count of employee left] / [total-employee] * 100 
 
 ***Table-2 : Rate Computation Rules***
@@ -71,12 +68,12 @@ The solution uses the 'Streamlit' and 'plotly' libraries to construct a fully in
 
 |Requirement ID|Solution ID|Proposed Solution|
 |:--|:---|:--|
-|HR-DA01-REQ-1 <br> HR-DA01-REQ-2 <br> HR-DA01-REQ-3 <br> HR-DA01-REQ-4 <br> HR-DA01-REQ-5 <br> HR-DA01-REQ-6 <br> HR-DA01-REQ-7|HR-DA01-SOL-1|To assist in providing answers to queries in the appropriate requirements, a dedicated dashboard with interactive visualizations at the summary level will be constructed|
-|HR-DA01-REQ-8 <br> HR-DA01-REQ-9|HR-DA01-SOL-2|To assist in providing answers to queries regarding respective requirements, a dedicated dashboard comprising interactive visualizations relating to promotions and layoffs (capacity) will be created.|
-|HR-DA01-REQ-10|HR-DA01-SOL-3|To assist in addressing queries on pertinent requirements, a dedicated dashboard including dynamic visuals relevant to attrition will be constructed.|
+|HR-DA01-REQ-1 <br> HR-DA01-REQ-2 <br> HR-DA01-REQ-3 <br> HR-DA01-REQ-4 <br> HR-DA01-REQ-5 <br> HR-DA01-REQ-6 <br> HR-DA01-REQ-7|HR-DA01-SOL-1|To assist in providing answers to queries in the appropriate requirements, <br> a dedicated dashboard with interactive visualizations at the summary level <br> will be constructed|
+|HR-DA01-REQ-8 <br> HR-DA01-REQ-9|HR-DA01-SOL-2|To assist in providing answers to queries regarding respective <br> requirements, a dedicated dashboard comprising interactive <br> visualizations relating to promotions and layoffs (capacity) will be created.|
+|HR-DA01-REQ-10|HR-DA01-SOL-3|To assist in addressing queries on pertinent requirements, a dedicated <br> dashboard including dynamic visuals relevant to attrition will be constructed.|
 
 
-### Exploratory Data Analysis (EDA) and Feature Engineering [pandas]
+### Exploratory Data Analysis (EDA) and Feature Engineering [pandas]:
 The EDA and feature-engineering have been done using `pandas` to comprehend, become comfortable with, and verify the sanity of the given data. Using the pandas Python library, the `data-exploration,` `data-cleaning,` and `feature-engineering` have been completed. We are generally checking...
 * Presence of any missing values 
  * Any unusual value (outliers) 
@@ -85,11 +82,11 @@ The EDA and feature-engineering have been done using `pandas` to comprehend, bec
  * Determine dimensions of categorical columns and range of numeric columns
  * Create new features required to show relevant data/numbers in the report 
 
-### Report Creation [Streamlit, pandas, plotly]
+### Report Creation [Streamlit, pandas, plotly]:
 To put the suggested idea into practice, three interactive report dashboards (report tabs) will be developed. For specific requirements and the related proposed solution, see [Table-3: Proposed Solution](#solution-approach).  
 There are several graphics on each report dashboard, divided into expandable and collapsible sections. Each section provides the queries we're attempting to address along with any pertinent insights gained from the illustrations.  
 
-#### 1. Executive Summary Dashboard [HR-DA01-SOL-1]
+#### 1. Executive Summary Dashboard [HR-DA01-SOL-1]:
 'Gender', 'Age', 'Marital Status', 'Department', and 'Work Experience' are all examined in this high-level summary dashboard. This dashboard includes the sections below...
 ##### *Gender & Age and Marital Status Statistics:* <br><br>
 <img src="https://github.com/sssingh/human-resource-data-analysis-streamlit/blob/main/images/summary-01.png?raw=true" width="1000" height="500" /><br><br>
@@ -99,13 +96,13 @@ There are several graphics on each report dashboard, divided into expandable and
 <img src="https://github.com/sssingh/human-resource-data-analysis-streamlit/blob/main/images/summary-02.png?raw=true" width="1000" height="500" /><br><br>
 
 
-#### 2. Capacity Dashboard [HR-DA01-SOL-2]
+#### 2. Capacity Dashboard [HR-DA01-SOL-2]:
 This dashboard emphasizes the size and capabilities of the company's staff. This analysis will aid the business in its "rightsizing" decision in near future. This dashboard includes the sections below...
 ##### *Summary level & Department level promotion and layoffs statistics:* <br><br>
 <img src="https://github.com/sssingh/human-resource-data-analysis-streamlit/blob/main/images/capacity-all.png?raw=true" width="1000" height="500" /><br><br>
 
   
-#### 3. Attrition Dashboard [HR-DA01-SOL-3] 
+#### 3. Attrition Dashboard [HR-DA01-SOL-3]:
 This dashboard looks at the company's capacity for employee retention and determines what variables are at play if attrition rates are higher than anticipated. The corporation may change its practices to better manage attrition in light of the findings. <br><br>
  
 <img src="https://github.com/sssingh/human-resource-data-analysis-streamlit/blob/main/images/attrition-all.png?raw=true" width="1000" height="500" />
@@ -125,9 +122,9 @@ To run (and modify) the application locally follow below steps...
     ```
 3. From within the root folder of the application run the application...
     ```python...
-    streamlit run app.py  
+    streamlit run src/app.py  
     ```
-4. Copy and paste the `localhost` web-address displayed by above command in your browser to open and application.
+4. Copy and paste the `localhost:<port-no>` web-address displayed by above command in your browser to open and application.
 
 
 ## License

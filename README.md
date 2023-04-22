@@ -1,5 +1,5 @@
 
-<a href="https://sssingh-human-resource-data-analysis-streamlit-srcapp-6qnlbm.streamlit.app/"  target="_blank"><img src="https://img.shields.io/badge/open_app_in_streamlit-CC0000?style=for-the-badge&logo=streamlit&logoColor=black" /></a>
+<a href="https://sssingh-human-resource-data-analysis-streamlit-srcapp-6qnlbm.streamlit.app/"  target="_blank"><img src="https://img.shields.io/badge/open_app_in_streamlit-#f63366?style=for-the-badge&logo=streamlit&logoColor=black" /></a>
 
 
 # Human Resource Analysis
@@ -112,7 +112,7 @@ This dashboard looks at the company's capacity for employee retention and determ
 
 ## How To Use
 ### Read-only direct access via the web (Recommended):
-<a href="https://sssingh-human-resource-data-analysis-streamlit-srcapp-6qnlbm.streamlit.app/"  target="_blank"><img src="https://img.shields.io/badge/open_app_in_streamlit-CC0000?style=for-the-badge&logo=streamlit&logoColor=black" /></a> <br>
+<a href="https://sssingh-human-resource-data-analysis-streamlit-srcapp-6qnlbm.streamlit.app/"  target="_blank"><img src="https://img.shields.io/badge/open_app_in_streamlit-#f63366?style=for-the-badge&logo=streamlit&logoColor=black" /></a> <br>
 and explore the fully functional interactive report. <br><br>
 
 ### Run the application locally:

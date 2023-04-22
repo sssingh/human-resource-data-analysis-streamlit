@@ -1,5 +1,5 @@
 
-<a href="https://sssingh-human-resource-data-analysis-streamlit-srcapp-6qnlbm.streamlit.app/"  target="_blank"><img src="https://img.shields.io/badge/open_app_in_streamlit-E5E5E5E5?style=for-the-badge&logo=streamlit&logoColor=red" /></a>
+<a href="https://sssingh-human-resource-data-analysis-streamlit-srcapp-6qnlbm.streamlit.app/"  target="_blank"><img src="https://img.shields.io/badge/open_app_in_streamlit-E06666?style=for-the-badge&logo=streamlit&logoColor=black" /></a>
 
 
 # Human Resource Analysis

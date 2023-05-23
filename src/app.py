@@ -1,6 +1,6 @@
 """Application entry point, global configuration, application structure"""
 
-from config import app_config
+from config import app_config  
 import data
 import tab_capacity
 import tab_summary

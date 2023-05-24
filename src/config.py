@@ -15,7 +15,7 @@ class __PlotConfig:
     # ['ggplot2', 'seaborn', 'simple_white', 'plotly',
     #  'plotly_white', 'plotly_dark', 'presentation',
     #  'xgridoff', 'ygridoff', 'gridon', 'none']
-    theme = "plotly_dark"~
+    theme = "plotly_dark"
     cat_color_map = px.colors.qualitative.T10
     cat_color_map_r = px.colors.qualitative.T10_r
     cont_color_map = px.colors.sequential.amp

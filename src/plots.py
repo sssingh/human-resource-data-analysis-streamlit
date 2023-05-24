@@ -6,7 +6,6 @@ from pandas import DataFrame
 from plotly.graph_objects import Figure
 from config import plot_config
 
-
 # setup app-wide plotly theme
 io.templates.default = plot_config.theme
 
@@ -170,7 +169,7 @@ def plot_promotion_donut(df):
         .value_counts()
         .to_frame()
         .reset_index()
-        .rename({"ToBePromoted": "Count", "index": "Promotion"}, axis=1)
+        .rename({"ToBePromoted": "Promotion", "count": "Count"}, axis=1)
     )
     fig = px.pie(
         df_group,
@@ -194,8 +193,9 @@ def plot_retrench_donut(df):
         .value_counts()
         .to_frame()
         .reset_index()
-        .rename({"ToBeRetrenched": "Count", "index": "Retrench"}, axis=1)
+        .rename({"ToBeRetrenched": "Retrench", "count": "Count"}, axis=1)
     )
+
     fig = px.pie(
         df_group,
         names="Retrench",

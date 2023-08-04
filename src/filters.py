@@ -67,7 +67,7 @@ def __apply_filters(df, filter_elem, curr_filter_ui):
     with curr_filter_ui:
         filter_show = "<br>and".join(filter.split("and"))
         st.markdown(
-            f'<span style="color:#002b36"><b><i>{filter_show}</i></b></span>',
+            f'<span style="color:#FBFAFA"><b><i>{filter_show}</i></b></span>',
             unsafe_allow_html=True,
         )
     # return the filtered dataframe

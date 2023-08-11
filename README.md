@@ -1,11 +1,13 @@
 
+<img src="https://github.com/sssingh/human-resource-data-analysis-streamlit/blob/main/assets/logo.svg?raw=true"/><br><br> 
+
 <a href="https://sssingh-human-resource-data-analysis-streamlit-srcapp-6qnlbm.streamlit.app/"  target="_blank"><img src="https://img.shields.io/badge/open_app_in_streamlit-f63366?style=for-the-badge&logo=streamlit&logoColor=black" /></a>
 
+<img src="https://github.com/sssingh/human-resource-data-analysis-streamlit/blob/main/images/title.png?raw=true" width="1000" height="500" /> <br><br>
 
 # Human Resource Analysis
 In this `Data Analysis` project, we examine raw HR data to learn more about how organizational policies influence employee behaviors such as `attrition` and `job-satisfaction` plus staff `promotions` and `layoffs`. The company's human resources policies shall then be amended based on the insights obtained.
 
-<img src="https://github.com/sssingh/human-resource-data-analysis-streamlit/blob/main/images/title.png?raw=true" width="1000" height="500" /> <br><br>
 
 ## Features
 ⚡Multipage Interactive Dashboard  

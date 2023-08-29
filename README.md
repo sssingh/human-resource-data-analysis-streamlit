@@ -1,5 +1,5 @@
 
-<img src="https://github.com/sssingh/human-resource-data-analysis-streamlit/blob/main/assets/logo.svg?raw=true"/><br><br> 
+<img src="https://github.com/sssingh/human-resource-data-analysis-streamlit/blob/main/assets/logo.png?raw=true"/><br><br> 
 
 <a href="https://sssingh-human-resource-data-analysis-streamlit-srcapp-6qnlbm.streamlit.app/"  target="_blank"><img src="https://img.shields.io/badge/open_app_in_streamlit-f63366?style=for-the-badge&logo=streamlit&logoColor=black" /></a>
 

@@ -1,7 +1,7 @@
 
 <img src="https://github.com/sssingh/human-resource-data-analysis-streamlit/blob/main/assets/logo.png?raw=true" width="100"/><br><br> 
 
-<a href="https://sssingh-human-resource-data-analysis-streamlit-srcapp-6qnlbm.streamlit.app/"  target="_blank"><img src="https://img.shields.io/badge/open_app_in_streamlit-f63366?style=for-the-badge&logo=streamlit&logoColor=black" /></a>
+<a href="https://huggingface.co/spaces/sssingh/human-resource-data-analysis-streamlit"  target="_blank"><img src="https://img.shields.io/badge/click_here_to_open_streamlit_app-f63366?style=for-the-badge&logo=streamlit&logoColor=black" /></a>
 
 <img src="https://github.com/sssingh/human-resource-data-analysis-streamlit/blob/main/images/title.png?raw=true" width="1000" height="500" /> <br><br>
 
@@ -114,7 +114,7 @@ This dashboard looks at the company's capacity for employee retention and determ
 
 ## How To Use
 ### Read-only direct access via the web (Recommended):
-<a href="https://sssingh-human-resource-data-analysis-streamlit-srcapp-6qnlbm.streamlit.app/"  target="_blank"><img src="https://img.shields.io/badge/open_app_in_streamlit-f63366?style=for-the-badge&logo=streamlit&logoColor=black" /></a> <br>
+<a href="https://huggingface.co/spaces/sssingh/human-resource-data-analysis-streamlit"  target="_blank"><img src="https://img.shields.io/badge/click_here_to_open_streamlit_app-f63366?style=for-the-badge&logo=streamlit&logoColor=black" /></a> <br>
 and explore the fully functional interactive report. <br><br>
 
 ### Run the application locally:

@@ -1,4 +1,16 @@
 
+---
+title: Human Resource Data Analysis Streamlit
+emoji: 🏢
+colorFrom: red
+colorTo: pink
+sdk: streamlit
+sdk_version: 1.27.1
+app_file: app.py
+pinned: false
+license: mit
+---
+
 <img src="https://github.com/sssingh/human-resource-data-analysis-streamlit/blob/main/assets/logo.png?raw=true" width="100"/><br><br> 
 
 <a href="https://huggingface.co/spaces/sssingh/human-resource-data-analysis-streamlit"  target="_blank"><img src="https://img.shields.io/badge/click_here_to_open_streamlit_app-f63366?style=for-the-badge&logo=streamlit&logoColor=black" /></a>
